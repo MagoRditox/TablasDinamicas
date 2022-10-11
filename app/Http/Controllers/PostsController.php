@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Table;
+use App\Models\Table2;
 use DB;
-use DateTime;
-
-
 
 class PostsController extends Controller
 {
@@ -15,11 +14,25 @@ class PostsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *         $objects = Table::select('*')
+     *      ->join('table_variable', 'table_variable.id', '=', 'table_main.id')
+     *      ->get();
+     * $objects = DB::table('table_main')->join('table_variable', 'table_variable.id', '=', 'table_main.id', 'full outer');
+     * $second = DB::table('table_variable')
+     *        ->rightJoin('table_main', 'table_main.id', '=', 'table_variable.id');
+     * 
+     *  $first = DB::table('table_main')
+     *              ->leftJoin('table_variable', 'table_main.id', '=', 'table_variable.id')
+     *              ->unionAll($second)
+     *              ->get();
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.show')->with('posts', $posts);
+        $objects = Table::select('*')
+           ->join('table_variable', 'table_variable.id', '=', 'table_main.id')
+           ->get();
+
+        return view('posts.show')->with('objects', $objects);
     }
 
 
@@ -41,22 +54,35 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {       
-     /* $title = $request->input('title');
+    /*  $title = $request->input('title');
         $body = $request->input('body');
         $post = DB::insert("INSERT INTO posts (title, body)
         VALUES ('$title', '$body');");
         */
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required'
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'rol'=> 'required'
         ]);
         
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        $post = new Table;
+        $post->Nombre = $request->input('nombre');
+        $post->Descripcion = $request->input('descripcion');
+        $post->Rol = $request->input('rol');
         $post->save();
 
-        return redirect('/addT')->with('success', 'Insercion Realizada');
+        DB::unprepared('SET IDENTITY_INSERT table_variable ON');
+
+        $mod = new Table2;
+        $mod->id = $post->id;
+        $mod->Color = $request->input('color');
+        $mod->Tamano = $request->input('tamano');
+        $mod->Formato = $request->input('formato');
+        $mod->save();
+
+        DB::unprepared('SET IDENTITY_INSERT table_variable OFF');
+        
+        return redirect('/table_new')->with('success', 'Insercion Realizada');
        
     }
 
@@ -68,8 +94,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+        $object = Table::find($id);
+        return view('posts.show')->with('object', $object);
     }
 
     /**
@@ -80,7 +106,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $object = Table2::findOrFail($id);
+
+
+        return view('posts.form_mod')->with('object', $object);
     }
 
     /**
@@ -92,7 +122,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $object = Table2::findOrFail($id);
+        $object->Color = $request->input('color');
+        $object->Tamano = $request->input('tamano');
+        $object->Formato = $request->input('formato');
+        $object->save();
+
+        return redirect('/show_all')->with('success', 'Modificacion Realizada');
     }
 
     /**
@@ -103,6 +139,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);   
+        $user->delete();
+        return redirect('/')->with('success', 'Modificacion Realizada');
     }
 }

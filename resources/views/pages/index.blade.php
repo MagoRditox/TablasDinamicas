@@ -2,9 +2,8 @@
 
 @section('content')
     <div class="container" style="margin-top: 10%">
-        <a class="btn btn-success" style="text-decoration: none" href="/addT">Agregar Tabla</a>
-        <br>
-        <a class="btn btn-success" style="text-decoration: none" href="/add"> Agregar Campos</a>
+        <a class="btn btn-success" style="text-decoration: none" href="/table_new">Agregar Objeto</a> 
+        <a class="btn btn-success" style="text-decoration: none" href="/show_all">Mostrar Datos</a>
         <br>
     </div>
 @endsection
@@ -29,7 +28,7 @@
 
 <div class="row">
     <div class="col-sm">
-    <a style="background-color: rgba(98, 98, 255, 0.575)" href="/addT">Agregar Tabla</a> 
+    <a style="background-color: rgba(98, 98, 255, 0.575)" href="/addT">Agregar Objeto</a> 
     </div>
     <div class="col-sm">
     <a style="background-color: rgba(98, 98, 255, 0.575)" href="/add"> Agregar Campos</a>

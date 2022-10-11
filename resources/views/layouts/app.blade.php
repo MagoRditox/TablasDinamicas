@@ -77,4 +77,9 @@
         </main>
     </div>
 </body>
+<script>
+    function eliminarcurso(value) {
+        action = confirm(value) ? true : event.preventDefault()
+    }
+</script>
 </html>

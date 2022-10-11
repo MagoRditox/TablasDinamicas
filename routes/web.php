@@ -23,6 +23,7 @@ Route::controller('posts', PostsController::class);
 Route::resource('posts', PostsController::class);
 */
 
+//PagesController
 Route::get('/', PagesController::class);
 
 Route::get('/about', [PagesController::class, 'about']);
@@ -31,8 +32,19 @@ Route::get('/services', [PagesController::class, 'services']);
 
 Route::get('/index', [PagesController::class,'index']);
 
-Route::view('/addT', 'posts.form');
 
-Route::post('addT', [PostsController::class, 'store']);
+//PostsController
+Route::view('/table_new', 'posts.form');
+Route::post('table_new', [PostsController::class, 'store']);
 
-Route::get('/show', [PostsController::class, 'index']);
+Route::view('/table_mod', 'posts.form_mod');
+Route::post('table_mod', [PostsController::class, 'edit']);
+
+Route::get('/show_all', [PostsController::class, 'index']);
+
+Route::post('show', [PostsController::class, 'show'])->name('posts.show');
+
+
+Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy');

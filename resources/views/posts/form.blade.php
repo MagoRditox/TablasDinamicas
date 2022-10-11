@@ -4,19 +4,27 @@
 
 <div class="container">
 @include('inc.messages')
-<form method="POST" action="addT">
+<form method="POST" action="table_new">
     @csrf
     <div class="form-group">
-    <input name="title" placeholder="Nombre Del Producto" class='form-control' required><br>
+        <input name="nombre" placeholder="Nombre" class='form-control' required><br>
     </div>
     <div class="form-group">
-    <input name="body" placeholder="Descripcion" class='form-control' required><br>
+        <input name="descripcion" placeholder="Descripcion" class='form-control' required><br>
     </div>
     <div class="form-group">
-    <input name="color" placeholder="Color" class='form-control' required><br>
+        <input name="rol" placeholder="Rol" class='form-control' required><br>
+    </div>
+    <div class="form-group">
+        <input name="color" placeholder="Color (Opcional)" class='form-control'><br>
+    </div>
+    <div class="form-group">
+        <input name="tamano" placeholder="Tamaño (Opcional)" class='form-control'><br>
+    </div>
+    <div class="form-group">
+        <input name="formato" placeholder="Formato (Opcional)" class='form-control'><br>
     </div>
     <button>Agregar</button>
-
 </form>
 </div>
 
