@@ -29,6 +29,16 @@ class PagesController extends Controller
     {
         return view('pages.index');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        seld::creating(function($model){
+            $model->user_id = auth()->id();
+        });
+
+    }
     /*
     public function index(Request $request)
     {
