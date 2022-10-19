@@ -4,7 +4,7 @@
 
 <div class="container">
 @include('inc.messages')
-<form action="{{ route('posts.edit', $object[0]->id) }}" method ="POST">
+<form action="{{ route('posts.update', $object[0]->id) }}" method ="POST">
     @csrf
     {{ method_field('PUT') }}
     <div class="form-group">
