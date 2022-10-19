@@ -107,8 +107,10 @@ class PostsController extends Controller
     public function edit($id)
     {
 
-        $object = Table2::findOrFail($id);
-
+        $object = Table::select('*')
+           ->join('table_variable', 'table_variable.id', '=', 'table_main.id')
+           ->where('table_main.id', $id)
+           ->get();
 
         return view('posts.form_mod')->with('object', $object);
     }
@@ -128,7 +130,13 @@ class PostsController extends Controller
         $object->Formato = $request->input('formato');
         $object->save();
 
-        return redirect('/show_all')->with('success', 'Modificacion Realizada');
+        $object2 = Table::findOrFail($id);
+        $object2->Nombre = $request->input('nombre');
+        $object2->Descripcion = $request->input('descripcion');
+        $object2->Rol = $request->input('rol');
+        $object2->save();
+
+        return redirect('/')->with('success', 'Modificacion Realizada');
     }
 
     /**

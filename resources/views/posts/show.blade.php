@@ -24,9 +24,8 @@
                     <td>{{$object->Color}}</td>
                     <td>{{$object->Tamano}}</td>
                     <td>{{$object->Formato}}</td>
-                    <td><a href="{{ route('posts.show', $object->id) }}">Ver</a> /
+                    <td>
                     <a href="{{ route('posts.edit', $object->id) }}"> Editar</a> /
-
                     <a href="/posts/{{$object->id}}" onclick="return eliminarcurso('Eliminar curso')"> Eliminar</a></td>  
                 </tr>
             @endforeach

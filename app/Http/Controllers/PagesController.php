@@ -29,13 +29,4 @@ class PagesController extends Controller
     {
         return view('pages.index');
     }
-    /*
-    public function index(Request $request)
-    {
-        $query=DB::table('dbo.Administrador')
-        ->get();
-        return view('pages.index',['listado'=>$query]);
-    }
-
-    */
 }

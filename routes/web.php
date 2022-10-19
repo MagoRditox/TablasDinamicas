@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
-
+use App\Http\Controllers\CamposController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::controller('posts', PostsController::class);
-
-Route::resource('posts', PostsController::class);
 */
 
 //PagesController
@@ -34,17 +30,27 @@ Route::get('/index', [PagesController::class,'index']);
 
 
 //PostsController
+Route::resource('posts', PostsController::class);
+
 Route::view('/table_new', 'posts.form');
 Route::post('table_new', [PostsController::class, 'store']);
 
 Route::view('/table_mod', 'posts.form_mod');
-Route::post('table_mod', [PostsController::class, 'edit']);
 
-Route::get('/show_all', [PostsController::class, 'index']);
+Route::get('/show_all', [PostsController::class, 'index'])->name('posts.index');
 
 Route::post('show', [PostsController::class, 'show'])->name('posts.show');
 
-
 Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
+
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
+
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy');
+
+//CamposController
+
+Route::resource('campo', CamposController::class);
+
+Route::post('campo_new', [CamposController::class, 'update'])->name('campo.update');
+
+Route::post('campo_del', [CamposController::class, 'store'])->name('campo.destroy');
