@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -78,7 +79,7 @@
     </div>
 </body>
 <script>
-    function eliminarcurso(value) {
+    function eliminarobjeto(value) {
         action = confirm(value) ? true : event.preventDefault()
     }
 </script>

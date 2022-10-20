@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Table;
 use App\Models\Table2;
 use DB;
@@ -107,8 +106,10 @@ class PostsController extends Controller
     public function edit($id)
     {
 
-        $object = Table2::findOrFail($id);
-
+        $object = Table::select('*')
+           ->join('table_variable', 'table_variable.id', '=', 'table_main.id')
+           ->where('table_main.id', $id)
+           ->get();
 
         return view('posts.form_mod')->with('object', $object);
     }
@@ -122,13 +123,22 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $object = Table2::findOrFail($id);
-        $object->Color = $request->input('color');
-        $object->Tamano = $request->input('tamano');
-        $object->Formato = $request->input('formato');
-        $object->save();
+   
+        $object2 = Table::findOrFail($id);
+        $object2->Nombre = $request->input('nombre');
+        $object2->Descripcion = $request->input('descripcion');
+        $object2->Rol = $request->input('rol');
+        $object2->save();
 
-        return redirect('/show_all')->with('success', 'Modificacion Realizada');
+        $object = Table2::findOrFail($id);
+
+        foreach ( $object->getAttributes() as $key => $value){
+            if ($key === 'id' || $key === 'created_at' || $key === 'updated_at' ){}
+            else
+                $object->$key = $request->input(strtolower($key));
+        }
+        $object->save();
+        return redirect('/')->with('success', 'Modificacion Realizada');
     }
 
     /**
@@ -139,8 +149,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);   
-        $user->delete();
+        $tabla_variable = Table::findOrFail($id);   
+        $tabla_variable->delete();
+        $tabla_main = Table2::findOrFail($id);   
+        $tabla_main->delete();
         return redirect('/')->with('success', 'Modificacion Realizada');
     }
 }
