@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<a class="btn btn-success" style="text-decoration: none" href="/">Volver al Menu</a>
 @include('inc.messages')
     <h3>Mostrando datos de la db</h3>
     <table class="table">
@@ -32,7 +33,7 @@
                     </td>  
                 </tr>
             @endforeach
-            <a class="btn btn-success" style="text-decoration: none" href="/">Volver al Menu</a>
+            
         </tbody>
     </table>
 @endsection

@@ -74,7 +74,9 @@ class CamposController extends Controller
      */
     public function update(Request $request)
     {
+        
         $nombrecampo = $request->input('nombrecampo');
+
         $tipocampo = $request->input('tipocampo');
 
         DB::unprepared("ALTER TABLE table_variable ADD ".strval($nombrecampo)." ".$tipocampo);

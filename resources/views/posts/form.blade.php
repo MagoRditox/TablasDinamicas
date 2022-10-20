@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<a class="btn btn-success" style="text-decoration: none" href="/">Volver al Menu</a>
 <div class="container">
 @include('inc.messages')
 <form method="POST" action="table_new">

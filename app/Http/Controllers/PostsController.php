@@ -13,17 +13,7 @@ class PostsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     *         $objects = Table::select('*')
-     *      ->join('table_variable', 'table_variable.id', '=', 'table_main.id')
-     *      ->get();
-     * $objects = DB::table('table_main')->join('table_variable', 'table_variable.id', '=', 'table_main.id', 'full outer');
-     * $second = DB::table('table_variable')
-     *        ->rightJoin('table_main', 'table_main.id', '=', 'table_variable.id');
      * 
-     *  $first = DB::table('table_main')
-     *              ->leftJoin('table_variable', 'table_main.id', '=', 'table_variable.id')
-     *              ->unionAll($second)
-     *              ->get();
      */
     public function index()
     {
@@ -33,8 +23,7 @@ class PostsController extends Controller
 
         return view('posts.show')->with('objects', $objects);
     }
-
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -52,12 +41,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
-    /*  $title = $request->input('title');
-        $body = $request->input('body');
-        $post = DB::insert("INSERT INTO posts (title, body)
-        VALUES ('$title', '$body');");
-        */
+    {
         $this->validate($request, [
             'nombre' => 'required',
             'descripcion' => 'required',
@@ -151,8 +135,10 @@ class PostsController extends Controller
     {
         $tabla_variable = Table::findOrFail($id);   
         $tabla_variable->delete();
+
         $tabla_main = Table2::findOrFail($id);   
         $tabla_main->delete();
+
         return redirect('/')->with('success', 'Modificacion Realizada');
     }
 }
