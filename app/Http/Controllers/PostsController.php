@@ -107,6 +107,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try{
    
         $object2 = Table::findOrFail($id);
         $object2->Nombre = $request->input('nombre');
@@ -123,6 +124,9 @@ class PostsController extends Controller
         }
         $object->save();
         return redirect('/')->with('success', 'Modificacion Realizada');
+    }catch(\Exception $e){
+        return back()->withInput()->with('error', 'El campo modificado ' .$key.' posee formato incorrecto, intente nuevamente');
+    }
     }
 
     /**

@@ -65,6 +65,9 @@
                                         <select name="tipocampo" class='form-control'>
                                             <option value="varchar(255)">Varchar</option>
                                             <option value="INT">Numero</option>
+                                            <option value="FLOAT(53)">Float</option>
+                                            <option value="DATETIME">Fecha</option>
+                                            <option value="TEXT">Texto</option>
                                         </select>
                                         <br>
                                     </div>
