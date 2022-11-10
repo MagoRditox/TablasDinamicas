@@ -107,8 +107,8 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         try{
-   
         $object2 = Table::findOrFail($id);
         $object2->Nombre = $request->input('nombre');
         $object2->Descripcion = $request->input('descripcion');
@@ -120,14 +120,17 @@ class PostsController extends Controller
         foreach ( $object->getAttributes() as $key => $value){
             if ($key === 'id' || $key === 'created_at' || $key === 'updated_at' ){}
             else
-                $object->$key = $request->input(strtolower($key));
+            $object->$key = $request->input(strtolower($key));
+            $object->save();
         }
-        $object->save();
         return redirect('/')->with('success', 'Modificacion Realizada');
+
     }catch(\Exception $e){
         return back()->withInput()->with('error', 'El campo modificado ' .$key.' posee formato incorrecto, intente nuevamente');
     }
     }
+
+
 
     /**
      * Remove the specified resource from storage.

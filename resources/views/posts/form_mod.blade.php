@@ -35,7 +35,7 @@
                                     @foreach ($object[0]->getAttributes() as $key => $value)
                                         @if ($key === 'id' || $key === 'created_at' || $key === 'updated_at' )
                                         @else
-                                            <div class="form-group">
+                                       <div class="form-group">
                                                 <label for="{{ strtolower($key) }}">{{ $key }}</label>
                                                 <input name="{{ strtolower($key) }}" placeholder="{{ $key }}" class='form-control' value="{{ old( $key, $object[0]-> $key ) }}">
                                                 <br>
@@ -64,10 +64,10 @@
                                         <label for="tipocampo">Tipo de Dato</label>
                                         <select name="tipocampo" class='form-control'>
                                             <option value="varchar(255)">Varchar</option>
-                                            <option value="INT">Numero</option>
+                                            <option value="INT">INT</option>
                                             <option value="FLOAT(53)">Float</option>
-                                            <option value="DATETIME">Fecha</option>
-                                            <option value="TEXT">Texto</option>
+                                            <option value="DATETIME">datetime</option>
+                                            <option value="TEXT">TEXT</option>
                                         </select>
                                         <br>
                                     </div>
