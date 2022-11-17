@@ -123,7 +123,7 @@ class PostsController extends Controller
             $object->$key = $request->input(strtolower($key));
             $object->save();
         }
-        return redirect('/')->with('success', 'Modificacion Realizada');
+        return back()->withInput()->with('success', 'Modificacion Realizada');
 
     }catch(\Exception $e){
         return back()->withInput()->with('error', 'El campo modificado ' .$key.' posee formato incorrecto, intente nuevamente');

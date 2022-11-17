@@ -80,8 +80,14 @@
                                     <h6>Eliminar un Campo</h6>
                                     <div class="form-group">
                                         <label for="nombrecampodel">Nombre del Campo a Eliminar</label><br>
-                                        <input name="nombrecampodel" placeholder="Nombre del Campo" class='form-control'>
-                                    </div>
+                                        <select name="tipocampo" class='form-control'>
+                                    @foreach ($object[0]->getAttributes() as $key => $value)
+                                        @if ($key === 'id' || $key === 'created_at' || $key === 'updated_at' || $key ==='Nombre' || $key === 'Descripcion' || $key === 'Rol')
+                                        @else
+                                        <option value="{{ strtolower($key) }}">{{ $key }}</option>
+                                        @endif
+                                        @endforeach
+                                        </select>
                                     <br>
                                     <button class="btn btn-success">Eliminar Campo</button>
                                 </form>

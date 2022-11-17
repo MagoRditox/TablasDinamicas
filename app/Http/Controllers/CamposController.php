@@ -36,11 +36,11 @@ class CamposController extends Controller
     public function store(Request $request)
     {
         // D E S T R O Y
-        $object = $request->input('nombrecampodel');
+        $object = $request->input('tipocampo');
 
         DB::unprepared('ALTER TABLE table_variable DROP COLUMN '.strval($object));
 
-        return redirect('/')->with('success', 'Campo Eliminado Correctamente');
+        return back()->withInput()->with('success', 'Campo Eliminado Correctamente');
     }
 
     /**
@@ -81,7 +81,7 @@ class CamposController extends Controller
 
         DB::unprepared("ALTER TABLE table_variable ADD ".strval($nombrecampo)." ".$tipocampo);
 
-        return redirect('/')->with('success', 'Campo Agregado Correctamente');
+        return back()->withInput()->with('success', 'Campo Agregado Correctamente');
     }
 
     /**
