@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 use App\Models\Table;
 use App\Models\Table2;
@@ -58,9 +58,6 @@ class PostsController extends Controller
 
         $mod = new Table2;
         $mod->id = $post->id;
-        $mod->Color = $request->input('color');
-        $mod->Tamano = $request->input('tamano');
-        $mod->Formato = $request->input('formato');
         $mod->save();
 
         DB::unprepared('SET IDENTITY_INSERT table_variable OFF');
@@ -108,22 +105,26 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
 
-        try{
         $object2 = Table::findOrFail($id);
         $object2->Nombre = $request->input('nombre');
         $object2->Descripcion = $request->input('descripcion');
         $object2->Rol = $request->input('rol');
+        $validated = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'rol' => 'required',
+        ]);
         $object2->save();
-
+        try{
         $object = Table2::findOrFail($id);
-
         foreach ( $object->getAttributes() as $key => $value){
+            
             if ($key === 'id' || $key === 'created_at' || $key === 'updated_at' ){}
             else
             $object->$key = $request->input(strtolower($key));
             $object->save();
         }
-        return back()->withInput()->with('success', 'Modificacion Realizada');
+        return back()->withInput()->with('success', 'Modificacion Realizada correctamente');
 
     }catch(\Exception $e){
         return back()->withInput()->with('error', 'El campo modificado ' .$key.' posee formato incorrecto, intente nuevamente');
@@ -146,6 +147,6 @@ class PostsController extends Controller
         $tabla_main = Table2::findOrFail($id);   
         $tabla_main->delete();
 
-        return redirect('/')->with('success', 'Modificacion Realizada');
+        return back()->withInput()->with('success', 'Objecto eliminado');
     }
 }

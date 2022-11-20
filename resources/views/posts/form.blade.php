@@ -35,15 +35,6 @@
                             <div class="form-group">
                                 <input name="rol" placeholder="Rol" class='form-control' required><br>
                             </div>
-                            <div class="form-group">
-                                <input name="color" placeholder="Color (Opcional)" class='form-control'><br>
-                            </div>
-                            <div class="form-group">
-                                <input name="tamano" placeholder="Tamaño (Opcional)" class='form-control'><br>
-                            </div>
-                            <div class="form-group">
-                                <input name="formato" placeholder="Formato (Opcional)" class='form-control'><br>
-                            </div>
                             <button class="btn btn-success" >Agregar</button>
                         </form>
                     </div>

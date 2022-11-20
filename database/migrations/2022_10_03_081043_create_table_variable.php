@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('table_variable', function (Blueprint $table) {
             $table->id('id');
-            $table->string('Color')->nullable();
-            $table->string('Tamano')->nullable();
-            $table->string('Formato')->nullable();
             $table->timestamps();
         });
     }

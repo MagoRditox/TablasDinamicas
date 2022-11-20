@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Http\Request;
 use DB;
@@ -74,16 +75,17 @@ class CamposController extends Controller
      */
     public function update(Request $request)
     {
-        
         $nombrecampo = $request->input('nombrecampo');
-
         $tipocampo = $request->input('tipocampo');
+        $validated = $request->validate([
+            'nombrecampo' => 'required|alpha',
+        ]);
 
         DB::unprepared("ALTER TABLE table_variable ADD ".strval($nombrecampo)." ".$tipocampo);
 
-        return back()->withInput()->with('success', 'Campo Agregado Correctamente');
+        return back()->withInput()->with('success', 'Campo "'.$nombrecampo.'" Agregado Correctamente');
+        return back()->withoutInput()->with('error', 'Formato invalido o campo ya existe'.$e);
     }
-
     /**
      * Remove the specified resource from storage.
      *
