@@ -17,7 +17,7 @@
     
     
     
-    Para la instalación, y despues de haber instalado todos los programas necesarios, se seguirán los siguientes pasos EN ORDEN.
+    Instale todos los programas presentados arriba, despues de haber instalado todos los programas necesarios, se seguirán los siguientes pasos EN ORDEN.
     
     
     Primer paso.
@@ -37,12 +37,43 @@
     4-Habilitamos "TCP/IP"
     5-Reiniciamos el servicio
     
-    1- Instalar todos los programas
-    2- Clonar repositorio en C:\xampp\htdocs
-    3- En la ruta del repositorio, abrir una consola y seguir los pasos a continuación
-    3.1- "composer update"
-    3.2- "composer install"
-    3.3- "npm install"
-    3.4- "npm run build"
+    
+    Segundo paso
     
     
+    En el segundo paso, configuraremos el servidor y la base de datos, para ello, abriremos sql manager studio, y entraremos con la autenticación de windows.
+    
+    1-nos dirigimos a la carpeta Security/Logins y con click derecho creamos un nuevo usuario.
+    2-el nombre de usuario será "integra", y la autenticación la cambiamos a autenticación SQL, como contraseña, añadimos "integra" también.
+    3-en la pestaña de la izquierda, seleccionamos "roles del servidor(o Server roles si está en inglés), y le damos todos los permisos al usuario.
+    4-acto seguido, nos vamos a las propiedades del servidor, y en la pestaña seguridad, cambiamos la autenticación de "Autenticación de windows" a "modo SQL server y autenticación de windows"
+    5- reiniciamos el servidor
+    
+    Ahora, creamos la base de datos
+    
+    1-nos dirigimos a "databases" o "base de datos" y creamos una base de datos llamada "DATABASEINTEG" y guardamos.
+    
+    Tercer paso
+    
+    
+    En el tercer paso, se procede a la implementación de las dependencias, para esto, seguiremos una serie de comandos. 
+    1- Clonar repositorio en C:\xampp\htdocs
+    2- En la ruta del repositorio, abrir una consola y seguir los pasos a continuación
+    2.1- "composer update"
+    2.2- "composer install"
+    2.3- "npm install"
+    2.4- "npm run build"
+    3- crear archivo .env en la raiz del repositorio y pegar contenido de .env.example
+    3.1-se configura el archivo .env tomando en cuenta que base de datos será usada, ya que utilizaremos sqlsrv, ocuparemos la siguiente conexión
+    
+     DB_CONNECTION=sqlsrv
+     DB_HOST=127.0.0.1
+     DB_PORT=1434
+     DB_DATABASE=DATABASEINTEG
+     DB_USERNAME=integra
+     DB_PASSWORD=integra
+    
+    4- "php artisan key:generate"
+    5- "php artisan serve"
+    
+    Al haber iniciado el servidor, nos dirigimos a 127.0.0.1/8000 y tendremos el programa funcionando.
