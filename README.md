@@ -26,14 +26,17 @@
     
     1- Extraer los archivos llamados "php_sqlsrv_81_ts_x64.dll" y "php_pdo_sqlsrv_81_ts_x64.dll", paso siguiente dejar los archivos en el directorio "ext" en la carpeta de php de xampp (C:\xampp\php\ext)
     2- Editar php.ini (C:\xampp\php), en el cual se deben añadir en cualquier parte de este las siguientes lineas
-    <td>
-        <th>
-            extension=php_pdo_sqlsrv_72_ts_x64.dll
-    </th>
-    <th>
-            extension=php_sqlsrv_72_ts_x64.dll
-    </th>
-    </td>
+
+     extension=php_pdo_sqlsrv_81_ts_x64.dll
+     extension=php_sqlsrv_81_ts_x64.dll
+    
+    A continuación, configuraremos el "odbc", para esto debemos:
+    1-Abrir el manager del servidor SQL
+    2-Seleccionamos "protocolos"
+    3-Seleccionamos "TCP/IP"
+    4-Habilitamos "TCP/IP"
+    5-Reiniciamos el servicio
+    
     1- Instalar todos los programas
     2- Clonar repositorio en C:\xampp\htdocs
     3- En la ruta del repositorio, abrir una consola y seguir los pasos a continuación
