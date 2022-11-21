@@ -75,5 +75,6 @@
     
     4- "php artisan key:generate"
     5- "php artisan serve"
+    6- "php artisan migrate"
     
-    Al haber iniciado el servidor, nos dirigimos a 127.0.0.1/8000 y tendremos el programa funcionando.
+    Al haber iniciado el servidor, nos dirigimos a 127.0.0.1:8000 y tendremos el programa funcionando.
