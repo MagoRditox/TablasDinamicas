@@ -8,6 +8,7 @@
 4.-<a href="https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16"> SSMS 18.12.1</a>utilizado para crear administrador, probablemente opcional<br>
 5.-<a href="https://nodejs.org/en/download/">Node</a><br>
 6.-<a href="https://learn.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-2017">pdo para migraciones en servidor sqlsrv</a><br>
+7<.<a href="https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16">necesario para dar acceso al servidor</a><br>
 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
