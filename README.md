@@ -85,7 +85,10 @@
 <h2 align=center>Descripción de funciones</h2>
 
 
-1- Añadir columnas adicionales sin necesidad de modificar la tabla principal, de esta forma, la tabla principal se mantiene intacta y sin cambios mientras que una tabla variable puede tener cambios significativos
-2- Las columnas adicionales, pueden tener datos tipo VARCHAR, INT, DATETIME, FLOAT, TEXT. De esta forma, las columnas se vuelven generales dependiendo de los objetos adicionales
-3- realiza checkeo si los datos ingresador a la columna poseen el formato correcto, si ingresas letras en una columna que solo permite int, los datos no se ingresaran
+1- Añadir columnas adicionales sin necesidad de modificar la tabla principal, de esta forma, la tabla principal se mantiene intacta y sin cambios mientras que una tabla variable puede tener cambios significativos<br>
+
+2- Las columnas adicionales, pueden tener datos tipo VARCHAR, INT, DATETIME, FLOAT, TEXT. De esta forma, las columnas se vuelven generales dependiendo de los objetos adicionales<br>
+
+3- realiza checkeo si los datos ingresador a la columna poseen el formato correcto, si ingresas letras en una columna que solo permite int, los datos no se ingresaran<br>
+
 4- Eliminar columnas temporales de ser necesario, si una columna ya no es requerida, so puede eliminar sin problemas
