@@ -92,3 +92,11 @@
 3- realiza checkeo si los datos ingresador a la columna poseen el formato correcto, si ingresas letras en una columna que solo permite int, los datos no se ingresaran<br>
 
 4- Eliminar columnas temporales de ser necesario, si una columna ya no es requerida, so puede eliminar sin problemas
+
+
+
+<h2 align=center>Ejemplo de uso</h2>
+
+Ejemplo de uso que se pueden dar en esta herramienta es añadir columnas para productos que la requieran.
+
+de forma sencilla, si yo poseo una libreria, y empiezan a llegar libros en ingles por una temporada, me gustaría poder añadir una columna y exponer en que idioma estarán los libros, también de ser necesario se pueden añadir campos para señalar que libros son ediciones limitadas, fecha desde cuando esta disponible, entre otros. Si en algún momento la libreria decide no traer mas libros en otros idiomas, puede eliminar la columna idioma ya que sería un desperdicio de datos tener una columna vacia o con el mismo dato para cada inserción.
