@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-    <a>Tutorial instalación</a><br>
+    <h2 align="center">Tutorial instalación</h2><br>
     
     
     
@@ -78,3 +78,14 @@
     6- "php artisan migrate"
     
     Al haber iniciado el servidor, nos dirigimos a 127.0.0.1:8000 y tendremos el programa funcionando.
+
+
+
+
+<h2 align=center>Descripción de funciones</h2>
+
+
+1- Añadir columnas adicionales sin necesidad de modificar la tabla principal, de esta forma, la tabla principal se mantiene intacta y sin cambios mientras que una tabla variable puede tener cambios significativos
+2- Las columnas adicionales, pueden tener datos tipo VARCHAR, INT, DATETIME, FLOAT, TEXT. De esta forma, las columnas se vuelven generales dependiendo de los objetos adicionales
+3- realiza checkeo si los datos ingresador a la columna poseen el formato correcto, si ingresas letras en una columna que solo permite int, los datos no se ingresaran
+4- Eliminar columnas temporales de ser necesario, si una columna ya no es requerida, so puede eliminar sin problemas
